@@ -80,11 +80,9 @@ public class EmailSender {
             System.out.write(response, len, len);
         }
 
-        output.write(("From: " + from + "\r\n").getBytes());
-        output.write(("Subject: " + subject + "\r\n").getBytes());
-        output.write(("To: " + to + "\r\n").getBytes());
-        output.write(("Body: " + text + "\r\n").getBytes());
-        output.write(".\r\n".getBytes());
+        message = "Subject: " + subject + "\r\n" + "\r\n" + text + "\r\n.\r\n";
+        buffer = message.getBytes();
+        output.write(buffer, 0, buffer.length);
         output.flush();
 
         Thread.sleep(500);
